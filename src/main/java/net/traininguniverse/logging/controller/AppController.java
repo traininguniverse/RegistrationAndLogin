@@ -1,5 +1,7 @@
 package net.traininguniverse.logging.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -36,5 +38,13 @@ public class AppController {
 		userRepo.save(user);
 
 		return "register_success";
+	}
+
+	@GetMapping("/users")
+	public String listUsers(Model model) {
+		List<User> listUsers = userRepo.findAll();
+		model.addAttribute("listUsers", listUsers);
+
+		return "users";
 	}
 }
