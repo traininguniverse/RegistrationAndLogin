@@ -32,8 +32,8 @@ public class UserRepositoryTests {
 		user.setFirstName("Jan");
 		user.setLastName("Brzechwa");
 		
-		User savedUser = repo.save(user);
-		User existUser = entityManager.find(User.class, savedUser.getId());
+		User savedUser = repo.save(user);//uzyskujemy id z DB
+		User existUser = entityManager.find(User.class, savedUser.getId());//wyszukanie encji w DB
 		assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 	}
 }
